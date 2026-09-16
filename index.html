@@ -1,2112 +1,3256 @@
 <!DOCTYPE html>
 <html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>AIK Interactive Review — Size Reduction and Solid Separation</title>
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>
+AIK Interactive Review — Size Reduction and Solid Separation
+</title>
 
 <style>
+
 :root{
-  --navy:#153452;
-  --blue:#2f6fa5;
-  --teal:#367d70;
-  --gold:#b28734;
-  --ink:#23364b;
-  --muted:#69798b;
-  --line:#d8e0e7;
-  --paper:#fbfaf7;
-  --ok:#24734f;
-  --okbg:#e9f5ef;
-  --bad:#a2443f;
-  --badbg:#faeceb;
+
+--navy:#153452;
+--blue:#2f6fa5;
+--teal:#367d70;
+--gold:#b28734;
+
+--ink:#23364b;
+--muted:#69798b;
+--line:#d8e0e7;
+--paper:#fbfaf7;
+
+--ok:#24734f;
+--okbg:#e9f5ef;
+
+--bad:#a2443f;
+--badbg:#faeceb;
+
 }
+
 
 *{
-  box-sizing:border-box;
+box-sizing:border-box;
 }
+
 
 body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  color:var(--ink);
-  background:
-    linear-gradient(
-      180deg,
-      #f5f1e8 0,
-      #fafafa 220px,
-      #f6f7f8 100%
-    );
+
+margin:0;
+
+font-family:
+Arial,
+Helvetica,
+sans-serif;
+
+color:
+var(--ink);
+
+background:
+
+linear-gradient(
+180deg,
+#f5f1e8 0,
+#fafafa 220px,
+#f6f7f8 100%
+);
+
 }
+
 
 .container{
-  max-width:1100px;
-  margin:auto;
-  padding:28px 18px 50px;
+
+max-width:
+1100px;
+
+margin:
+auto;
+
+padding:
+28px 18px 50px;
+
 }
+
 
 .hero{
-  background:var(--paper);
-  border:1px solid #ded8cb;
-  border-radius:22px;
-  padding:30px;
-  box-shadow:0 10px 30px rgba(30,48,66,.07);
+
+background:
+var(--paper);
+
+border:
+1px solid #ded8cb;
+
+border-radius:
+22px;
+
+padding:
+30px;
+
+box-shadow:
+0 10px 30px
+rgba(30,48,66,.07);
+
 }
 
+
 .eyebrow{
-  font-family:Georgia, serif;
-  letter-spacing:.16em;
-  text-transform:uppercase;
-  color:var(--gold);
-  font-weight:bold;
-  font-size:13px;
+
+font-family:
+Georgia,
+serif;
+
+letter-spacing:
+.16em;
+
+text-transform:
+uppercase;
+
+color:
+var(--gold);
+
+font-weight:
+bold;
+
+font-size:
+13px;
+
 }
+
 
 h1,
 h2,
 h3{
-  font-family:Georgia, serif;
-  color:var(--navy);
-  margin:0;
+
+font-family:
+Georgia,
+serif;
+
+color:
+var(--navy);
+
+margin:
+0;
+
 }
+
 
 h1{
-  font-size:clamp(34px,5vw,54px);
-  margin-top:8px;
+
+font-size:
+clamp(
+34px,
+5vw,
+54px
+);
+
+line-height:
+1.08;
+
+margin-top:
+8px;
+
+max-width:
+900px;
+
 }
+
 
 .subtitle{
-  font-size:18px;
-  color:var(--muted);
-  max-width:800px;
-  line-height:1.55;
-  margin-top:14px;
+
+font-size:
+18px;
+
+color:
+var(--muted);
+
+max-width:
+850px;
+
+line-height:
+1.55;
+
+margin-top:
+16px;
+
 }
+
 
 .rule{
-  height:2px;
-  background:var(--gold);
-  margin:24px 0 18px;
+
+height:
+2px;
+
+background:
+var(--gold);
+
+margin:
+24px 0 18px;
+
 }
 
+
 .nav{
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
-  margin:22px 0;
+
+display:
+flex;
+
+gap:
+10px;
+
+flex-wrap:
+wrap;
+
+margin:
+22px 0;
+
 }
+
 
 .nav button,
 .btn{
-  border:1px solid var(--line);
-  background:white;
-  color:var(--navy);
-  padding:11px 17px;
-  border-radius:10px;
-  font-weight:bold;
-  cursor:pointer;
-  font-size:15px;
-  min-height:44px;
+
+border:
+1px solid var(--line);
+
+background:
+white;
+
+color:
+var(--navy);
+
+padding:
+11px 17px;
+
+border-radius:
+10px;
+
+font-weight:
+bold;
+
+cursor:
+pointer;
+
+font-size:
+15px;
+
+min-height:
+44px;
+
+transition:
+.15s;
+
 }
+
 
 .nav button:hover,
 .btn:hover{
-  transform:translateY(-1px);
+
+transform:
+translateY(-1px);
+
 }
+
 
 .nav button.active,
 .btn.primary{
-  background:var(--navy);
-  color:white;
-  border-color:var(--navy);
+
+background:
+var(--navy);
+
+color:
+white;
+
+border-color:
+var(--navy);
+
 }
+
 
 .panel{
-  display:none;
+
+display:
+none;
+
 }
+
 
 .panel.active{
-  display:block;
+
+display:
+block;
+
 }
+
+
+/* =============================
+   SUMMARY
+============================= */
+
 
 .grid3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:16px;
+
+display:
+grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:
+16px;
+
 }
+
 
 .week-card{
-  background:white;
-  border:1px solid var(--line);
-  border-top:5px solid var(--blue);
-  border-radius:14px;
-  padding:20px;
+
+background:
+white;
+
+border:
+1px solid var(--line);
+
+border-top:
+5px solid var(--blue);
+
+border-radius:
+14px;
+
+padding:
+20px;
+
 }
+
 
 .week-card h3{
-  font-size:22px;
-  margin:5px 0 14px;
+
+font-size:
+22px;
+
+margin:
+5px 0 14px;
+
 }
+
 
 .week-label{
-  font-size:13px;
-  font-weight:bold;
-  letter-spacing:.08em;
-  text-transform:uppercase;
-  color:var(--muted);
+
+font-size:
+13px;
+
+font-weight:
+bold;
+
+letter-spacing:
+.08em;
+
+text-transform:
+uppercase;
+
+color:
+var(--muted);
+
 }
+
 
 .equipment{
-  padding:11px 0;
-  border-top:1px solid #edf0f3;
+
+padding:
+11px 0;
+
+border-top:
+1px solid #edf0f3;
+
 }
+
 
 .equipment:first-of-type{
-  border-top:none;
+
+border-top:
+none;
+
 }
+
 
 .equipment b{
-  display:block;
-  color:var(--navy);
-  margin-bottom:4px;
+
+display:
+block;
+
+color:
+var(--navy);
+
+margin-bottom:
+4px;
+
+font-size:
+16px;
+
 }
+
 
 .equipment span{
-  color:var(--muted);
-  line-height:1.45;
+
+color:
+var(--muted);
+
+line-height:
+1.45;
+
 }
+
 
 .quick-grid{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:14px;
-  margin-top:16px;
+
+display:
+grid;
+
+grid-template-columns:
+repeat(2,1fr);
+
+gap:
+14px;
+
+margin-top:
+16px;
+
 }
+
 
 .quick{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:12px;
-  padding:16px;
+
+background:
+white;
+
+border:
+1px solid var(--line);
+
+border-radius:
+12px;
+
+padding:
+16px;
+
 }
+
 
 .quick h3{
-  font-size:18px;
-  margin-bottom:7px;
+
+font-size:
+18px;
+
+margin-bottom:
+7px;
+
 }
+
 
 .quick p{
-  margin:0;
-  color:var(--muted);
-  line-height:1.5;
+
+margin:
+0;
+
+color:
+var(--muted);
+
+line-height:
+1.5;
+
 }
+
 
 .note{
-  margin-top:18px;
-  padding:14px 16px;
-  background:white;
-  border-left:4px solid var(--gold);
-  color:var(--muted);
-  line-height:1.55;
+
+margin-top:
+18px;
+
+padding:
+14px 16px;
+
+background:
+white;
+
+border-left:
+4px solid var(--gold);
+
+color:
+var(--muted);
+
+line-height:
+1.55;
+
 }
 
-/* FLASHCARD */
+
+/* =============================
+   FLASHCARD
+============================= */
+
 
 .flash-wrap{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:14px;
+
+display:
+grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:
+14px;
+
 }
+
 
 .flash{
-  min-height:180px;
-  border:1px solid var(--line);
-  border-radius:14px;
-  background:white;
-  padding:20px;
-  cursor:pointer;
-  position:relative;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
+
+min-height:
+180px;
+
+border:
+1px solid var(--line);
+
+border-radius:
+14px;
+
+background:
+white;
+
+padding:
+20px;
+
+cursor:
+pointer;
+
+position:
+relative;
+
+display:
+flex;
+
+align-items:
+center;
+
+justify-content:
+center;
+
+text-align:
+center;
+
+color:
+var(--ink);
+
 }
+
+
+.flash:hover{
+
+border-color:
+#9fb4c6;
+
+}
+
 
 .flash .back{
-  display:none;
-  color:var(--muted);
-  line-height:1.55;
+
+display:
+none;
+
+color:
+var(--muted);
+
+line-height:
+1.55;
+
 }
+
 
 .flash.flipped .front{
-  display:none;
+
+display:
+none;
+
 }
+
 
 .flash.flipped .back{
-  display:block;
+
+display:
+block;
+
 }
+
 
 .flash .hint{
-  position:absolute;
-  bottom:10px;
-  left:0;
-  right:0;
-  font-size:12px;
-  color:#96a1ad;
+
+position:
+absolute;
+
+bottom:
+10px;
+
+left:
+0;
+
+right:
+0;
+
+font-size:
+12px;
+
+color:
+#96a1ad;
+
 }
 
-/* QUIZ */
+
+/* =============================
+   QUIZ
+============================= */
+
 
 .quiz-shell{
-  background:white;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:22px;
+
+background:
+white;
+
+border:
+1px solid var(--line);
+
+border-radius:
+16px;
+
+padding:
+22px;
+
+box-shadow:
+0 6px 22px
+rgba(20,50,82,.05);
+
 }
+
 
 .quiz-meta{
-  display:flex;
-  justify-content:space-between;
-  flex-wrap:wrap;
-  gap:10px;
-  color:var(--muted);
-  font-size:14px;
+
+display:
+flex;
+
+justify-content:
+space-between;
+
+flex-wrap:
+wrap;
+
+gap:
+10px;
+
+color:
+var(--muted);
+
+font-size:
+14px;
+
 }
+
 
 .progress{
-  height:8px;
-  background:#edf1f4;
-  border-radius:999px;
-  overflow:hidden;
-  margin:12px 0 20px;
+
+height:
+8px;
+
+background:
+#edf1f4;
+
+border-radius:
+999px;
+
+overflow:
+hidden;
+
+margin:
+12px 0 20px;
+
 }
+
 
 .progress div{
-  height:100%;
-  background:var(--blue);
-  width:0;
-  transition:.25s;
+
+height:
+100%;
+
+background:
+var(--blue);
+
+width:
+0;
+
+transition:
+.25s;
+
 }
+
 
 .question{
-  font-family:Georgia, serif;
-  font-size:24px;
-  color:var(--navy);
-  line-height:1.4;
-  margin-bottom:18px;
+
+font-family:
+Georgia,
+serif;
+
+font-size:
+24px;
+
+color:
+var(--navy);
+
+line-height:
+1.4;
+
+margin:
+8px 0 18px;
+
 }
+
 
 .options{
-  display:grid;
-  gap:10px;
+
+display:
+grid;
+
+gap:
+10px;
+
 }
+
 
 .option{
-  width:100%;
-  text-align:left;
-  background:white;
-  border:1px solid var(--line);
-  padding:13px 15px;
-  border-radius:10px;
-  cursor:pointer;
-  font-size:16px;
-  min-height:50px;
-  color:var(--ink);
+
+width:
+100%;
+
+text-align:
+left;
+
+background:
+white;
+
+border:
+1px solid var(--line);
+
+padding:
+13px 15px;
+
+border-radius:
+10px;
+
+cursor:
+pointer;
+
+font-size:
+16px;
+
+min-height:
+50px;
+
+color:
+var(--ink);
+
 }
+
 
 .option:hover{
-  border-color:#9fb4c6;
-  background:#fafcfd;
+
+border-color:
+#9fb4c6;
+
+background:
+#fafcfd;
+
 }
+
 
 .option.correct{
-  background:var(--okbg);
-  border-color:#8bc5a9;
-  color:#145c3d;
+
+background:
+var(--okbg);
+
+border-color:
+#8bc5a9;
+
+color:
+#145c3d;
+
 }
+
 
 .option.wrong{
-  background:var(--badbg);
-  border-color:#dfaaa7;
-  color:#8b3935;
+
+background:
+var(--badbg);
+
+border-color:
+#dfaaa7;
+
+color:
+#8b3935;
+
 }
+
 
 .option:disabled{
-  cursor:default;
+
+cursor:
+default;
+
 }
+
 
 .feedback{
-  display:none;
-  margin-top:15px;
-  padding:13px;
-  border-radius:10px;
-  line-height:1.5;
+
+display:
+none;
+
+margin-top:
+15px;
+
+padding:
+13px;
+
+border-radius:
+10px;
+
+line-height:
+1.5;
+
 }
+
 
 .feedback.show{
-  display:block;
+
+display:
+block;
+
 }
+
 
 .feedback.good{
-  background:var(--okbg);
-  color:#145c3d;
+
+background:
+var(--okbg);
+
+color:
+#145c3d;
+
 }
+
 
 .feedback.bad{
-  background:var(--badbg);
-  color:#8b3935;
+
+background:
+var(--badbg);
+
+color:
+#8b3935;
+
 }
+
 
 .quiz-actions{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  margin-top:18px;
-  flex-wrap:wrap;
+
+display:
+flex;
+
+justify-content:
+space-between;
+
+gap:
+10px;
+
+margin-top:
+18px;
+
+flex-wrap:
+wrap;
+
 }
+
 
 .scorebox{
-  display:none;
-  text-align:center;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:28px;
+
+display:
+none;
+
+text-align:
+center;
+
+background:
+white;
+
+border:
+1px solid var(--line);
+
+border-radius:
+16px;
+
+padding:
+28px;
+
 }
+
 
 .scorebig{
-  font-family:Georgia, serif;
-  font-size:54px;
-  color:var(--navy);
-  font-weight:bold;
-  margin:12px 0;
+
+font-family:
+Georgia,
+serif;
+
+font-size:
+54px;
+
+color:
+var(--navy);
+
+font-weight:
+bold;
+
+margin:
+12px 0;
+
 }
+
 
 .breakdown{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  margin:20px 0;
+
+display:
+grid;
+
+grid-template-columns:
+repeat(3,1fr);
+
+gap:
+12px;
+
+margin:
+20px 0;
+
 }
+
 
 .breakdown div{
-  padding:14px;
-  border:1px solid var(--line);
-  border-radius:10px;
-  background:#f3f6f8;
+
+padding:
+14px;
+
+border:
+1px solid var(--line);
+
+border-radius:
+10px;
+
+background:
+#f3f6f8;
+
 }
+
 
 .footer{
-  text-align:center;
-  margin-top:28px;
-  font-size:13px;
-  color:#8a96a3;
+
+text-align:
+center;
+
+margin-top:
+28px;
+
+font-size:
+13px;
+
+color:
+#8a96a3;
+
 }
+
 
 @media(max-width:850px){
-  .grid3,
-  .flash-wrap{
-    grid-template-columns:1fr;
-  }
+
+.grid3,
+.flash-wrap{
+
+grid-template-columns:
+1fr;
+
 }
+
+}
+
 
 @media(max-width:700px){
-  .quick-grid,
-  .breakdown{
-    grid-template-columns:1fr;
-  }
 
-  .hero{
-    padding:22px;
-  }
+.quick-grid,
+.breakdown{
 
-  .question{
-    font-size:21px;
-  }
+grid-template-columns:
+1fr;
+
 }
+
+
+.hero{
+
+padding:
+22px;
+
+}
+
+
+.question{
+
+font-size:
+21px;
+
+}
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
+
 <div class="container">
+
 
 <section class="hero">
 
+
 <div class="eyebrow">
-Alat Industri Kimia • Interactive Review
+
+ALAT INDUSTRI KIMIA • INTERACTIVE REVIEW
+
 </div>
 
-<h1>Week 1–3</h1>
+
+<h1>
+
+Size Reduction and Solid Separation
+
+</h1>
+
 
 <p class="subtitle">
-Review interaktif materi Size Reduction dan Solid Separation.
+
+Interactive review untuk materi Week 1–3.
 Gunakan menu di bawah untuk membaca ringkasan,
 latihan flashcards, atau mengerjakan quiz.
+
 </p>
+
 
 <div class="rule"></div>
 
+
 <div class="nav">
-  <button class="active" data-tab="summary">
-    Ringkasan
-  </button>
 
-  <button data-tab="flashcards">
-    Flashcards
-  </button>
 
-  <button data-tab="quiz">
-    Quiz
-  </button>
-</div>
+<button
+class="active"
+data-tab="summary">
 
-<!-- ===================== -->
-<!-- RINGKASAN -->
-<!-- ===================== -->
+Ringkasan
 
-<div id="summary" class="panel active">
+</button>
 
-  <div id="summaryGrid" class="grid3"></div>
 
-  <div class="quick-grid">
+<button
+data-tab="flashcards">
 
-    <div class="quick">
-      <h3>Size Reduction</h3>
+Flashcards
 
-      <p>
-      Mulai dari target ukuran produk,
-      feed size, hardness, abrasiveness,
-      friability, moisture, fines tolerance,
-      dan capacity.
-      </p>
-    </div>
+</button>
 
-    <div class="quick">
-      <h3>Solid Separation</h3>
 
-      <p>
-      Tentukan dulu fase feed:
-      bulk solid → screening;
-      dusty gas → gas cleaning.
-      </p>
-    </div>
+<button
+data-tab="quiz">
 
-  </div>
+Quiz
 
-  <div class="note">
+</button>
 
-    <b>Inti selektivitas alat:</b>
-
-    jangan hanya menghafal bentuk alat.
-
-    Hubungkan
-
-    <b>
-    karakter feed → mekanisme → fungsi alat → target proses.
-    </b>
-
-  </div>
 
 </div>
 
 
-<!-- ===================== -->
-<!-- FLASHCARDS -->
-<!-- ===================== -->
 
-<div id="flashcards" class="panel">
+<!-- ===================================
+     SUMMARY
+=================================== -->
 
-  <p style="color:#69798b">
-    Klik kartu untuk melihat jawabannya.
-  </p>
 
-  <div id="flashGrid" class="flash-wrap"></div>
+<div
+id="summary"
+class="panel active">
+
+
+<div
+id="summaryGrid"
+class="grid3">
+
+</div>
+
+
+
+<div class="quick-grid">
+
+
+<div class="quick">
+
+
+<h3>
+
+Size Reduction: mulai dari apa?
+
+</h3>
+
+
+<p>
+
+Mulai dari target ukuran produk,
+feed size,
+hardness,
+abrasiveness,
+friability,
+moisture,
+fines tolerance,
+dan capacity.
+
+</p>
+
 
 </div>
 
 
-<!-- ===================== -->
-<!-- QUIZ -->
-<!-- ===================== -->
 
-<div id="quiz" class="panel">
-
-  <div id="quizBox" class="quiz-shell">
-
-    <div class="quiz-meta">
-
-      <span id="qMeta"></span>
-
-      <span id="scoreMeta"></span>
-
-    </div>
-
-    <div class="progress">
-      <div id="progressBar"></div>
-    </div>
-
-    <div
-      id="qWeek"
-      class="week-label">
-    </div>
-
-    <div
-      id="question"
-      class="question">
-    </div>
-
-    <div
-      id="options"
-      class="options">
-    </div>
-
-    <div
-      id="feedback"
-      class="feedback">
-    </div>
-
-    <div class="quiz-actions">
-
-      <button
-        id="resetQuiz"
-        class="btn">
-
-        Reset Quiz
-
-      </button>
-
-      <button
-        id="nextBtn"
-        class="btn primary"
-        style="display:none">
-
-        Soal berikutnya →
-
-      </button>
-
-    </div>
-
-  </div>
+<div class="quick">
 
 
-  <div
-    id="resultBox"
-    class="scorebox">
+<h3>
 
-    <div class="eyebrow">
-      HASIL QUIZ
-    </div>
+Solid Separation: mulai dari apa?
 
-    <div
-      id="finalScore"
-      class="scorebig">
-    </div>
+</h3>
 
-    <p
-      id="finalMessage"
-      style="color:#69798b;font-size:17px">
-    </p>
 
-    <div
-      id="breakdown"
-      class="breakdown">
-    </div>
+<p>
 
-    <button
-      id="restartQuiz"
-      class="btn primary">
+Tentukan dulu fase feed.
 
-      Ulangi Quiz
+Bulk solid → screening.
 
-    </button>
+Dusty gas → gas cleaning.
 
-  </div>
+</p>
+
 
 </div>
+
+
+</div>
+
+
+
+<div class="note">
+
+
+<b>
+
+Inti selektivitas alat:
+
+</b>
+
+
+jangan hanya menghafal bentuk alat.
+
+Hubungkan
+
+
+<b>
+
+karakter feed → mekanisme → fungsi alat → target proses.
+
+</b>
+
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===================================
+     FLASHCARDS
+=================================== -->
+
+
+<div
+id="flashcards"
+class="panel">
+
+
+<p
+style="
+color:#69798b;
+margin-top:0;
+">
+
+Klik kartu untuk melihat jawabannya.
+
+</p>
+
+
+<div
+id="flashGrid"
+class="flash-wrap">
+
+</div>
+
+
+</div>
+
+
+
+<!-- ===================================
+     QUIZ
+=================================== -->
+
+
+<div
+id="quiz"
+class="panel">
+
+
+<div
+id="quizBox"
+class="quiz-shell">
+
+
+<div class="quiz-meta">
+
+
+<span id="qMeta">
+
+</span>
+
+
+<span id="scoreMeta">
+
+</span>
+
+
+</div>
+
+
+
+<div class="progress">
+
+
+<div id="progressBar">
+
+</div>
+
+
+</div>
+
+
+
+<div
+id="qWeek"
+class="week-label">
+
+</div>
+
+
+
+<div
+id="question"
+class="question">
+
+</div>
+
+
+
+<div
+id="options"
+class="options">
+
+</div>
+
+
+
+<div
+id="feedback"
+class="feedback">
+
+</div>
+
+
+
+<div class="quiz-actions">
+
+
+<button
+id="resetQuiz"
+class="btn">
+
+Reset Quiz
+
+</button>
+
+
+<button
+id="nextBtn"
+class="btn primary"
+style="display:none">
+
+Soal berikutnya →
+
+</button>
+
+
+</div>
+
+
+</div>
+
+
+
+<div
+id="resultBox"
+class="scorebox">
+
+
+<div class="eyebrow">
+
+HASIL QUIZ
+
+</div>
+
+
+<div
+id="finalScore"
+class="scorebig">
+
+</div>
+
+
+<p
+id="finalMessage"
+style="
+color:#69798b;
+font-size:17px;
+">
+
+</p>
+
+
+
+<div
+id="breakdown"
+class="breakdown">
+
+</div>
+
+
+
+<button
+id="restartQuiz"
+class="btn primary">
+
+Ulangi Quiz
+
+</button>
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
 
+
 <div class="footer">
+
 Program Studi Teknik Kimia • UPN “Veteran” Jawa Timur
-</div>
 
 </div>
+
+
+</div>
+
 
 
 <script>
 
-/* ==================================================
-   DATA RINGKASAN
-================================================== */
+
+/* ==========================================
+   SUMMARY DATA
+========================================== */
+
 
 const summaries = [
 
+
 {
-  week:"Week 1",
 
-  title:"Coarse Size Reduction",
+week:"Week 1",
 
-  accent:"#2f6fa5",
+title:"Coarse Size Reduction",
 
-  items:[
+accent:"#2f6fa5",
 
-    [
-      "Jaw Crusher",
-      "Primary crushing; feed besar; robust; compression."
-    ],
+items:[
 
-    [
-      "Gyratory Crusher",
-      "Primary crushing; continuous; very high capacity."
-    ],
 
-    [
-      "Cone Crusher",
-      "Secondary / tertiary crushing; product control."
-    ],
+[
+"Jaw Crusher",
+"Primary crushing; feed besar; robust; compression."
+],
 
-    [
-      "Rotary Crusher",
-      "Impact route; cocok untuk material friable."
-    ]
 
-  ]
+[
+"Gyratory Crusher",
+"Primary crushing; continuous; very high capacity."
+],
+
+
+[
+"Cone Crusher",
+"Secondary / tertiary crushing; product control lebih baik."
+],
+
+
+[
+"Rotary Crusher",
+"Impact route; cocok untuk material friable."
+]
+
+
+]
+
 },
 
 
+
 {
-  week:"Week 2",
 
-  title:"Intermediate & Fine Reduction",
+week:"Week 2",
 
-  accent:"#b28734",
+title:"Intermediate & Fine Reduction",
 
-  items:[
+accent:"#b28734",
 
-    [
-      "Crushing Roll",
-      "Compression; intermediate crushing; produk relatif seragam."
-    ],
+items:[
 
-    [
-      "Impact Breaker",
-      "Impact; high reduction ratio; fines lebih tinggi."
-    ],
 
-    [
-      "Hammer Mill",
-      "Impact + screen; intermediate–fine."
-    ],
+[
+"Crushing Roll",
+"Compression; intermediate crushing; produk relatif seragam."
+],
 
-    [
-      "Ball Mill",
-      "Impact + attrition; fine / very fine grinding."
-    ]
 
-  ]
+[
+"Impact Breaker",
+"Impact; high reduction ratio; fines lebih tinggi."
+],
+
+
+[
+"Hammer Mill",
+"Impact + screen; intermediate–fine reduction."
+],
+
+
+[
+"Ball Mill",
+"Impact + attrition; fine / very fine grinding."
+]
+
+
+]
+
 },
 
 
+
 {
-  week:"Week 3",
 
-  title:"Solid Separation",
+week:"Week 3",
 
-  accent:"#367d70",
+title:"Solid Separation",
 
-  items:[
+accent:"#367d70",
 
-    [
-      "Trommel",
-      "Rotating screen; coarse / bulky feed."
-    ],
+items:[
 
-    [
-      "Vibrating Screen",
-      "High-capacity size classification."
-    ],
 
-    [
-      "Cyclone",
-      "Dry gas–solid separation; centrifugal / inertial."
-    ],
+[
+"Trommel",
+"Rotating perforated screen; coarse / bulky feed."
+],
 
-    [
-      "Scrubber",
-      "Wet gas cleaning; liquid capture."
-    ]
 
-  ]
+[
+"Vibrating Screen",
+"High-capacity particle size classification."
+],
+
+
+[
+"Cyclone",
+"Dry gas–solid separation; centrifugal / inertial."
+],
+
+
+[
+"Scrubber",
+"Wet gas cleaning melalui kontak dengan liquid."
+]
+
+
+]
+
 }
+
 
 ];
 
 
-/* ==================================================
-   DATA QUIZ
-================================================== */
+
+/* ==========================================
+   QUIZ DATA
+========================================== */
+
 
 const questions = [
 
+
 {
-  week:"Week 1",
 
-  topic:"Coarse Size Reduction",
+week:"Week 1",
 
-  q:
-  "Untuk primary crushing batuan keras dengan feed sangat besar dan kapasitas sedang, alat yang paling sesuai adalah …",
+topic:"Coarse Size Reduction",
 
-  options:[
-    "Jaw Crusher",
-    "Ball Mill",
-    "Vibrating Screen",
-    "Scrubber"
-  ],
+q:
+"Untuk primary crushing batuan keras dengan feed sangat besar dan kapasitas sedang, alat yang paling sesuai adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Jaw Crusher cocok untuk primary crushing, mampu menerima feed besar, dan memiliki konstruksi yang robust."
+"Jaw Crusher",
+
+"Ball Mill",
+
+"Vibrating Screen",
+
+"Scrubber"
+
+],
+
+answer:0,
+
+why:
+"Jaw Crusher cocok untuk primary crushing, mampu menerima feed besar, dan memiliki konstruksi yang robust."
+
 },
 
 
+
 {
-  week:"Week 1",
 
-  topic:"Coarse Size Reduction",
+week:"Week 1",
 
-  q:
-  "Jika primary crushing membutuhkan operasi kontinu dengan throughput sangat besar, alat yang lebih sesuai adalah …",
+topic:"Coarse Size Reduction",
 
-  options:[
-    "Gyratory Crusher",
-    "Hammer Mill",
-    "Trommel",
-    "Crushing Roll"
-  ],
+q:
+"Jika primary crushing membutuhkan operasi kontinu dengan throughput sangat besar, alat yang lebih sesuai adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Gyratory Crusher umum digunakan untuk primary crushing dengan kapasitas sangat besar dan operasi kontinu."
+"Gyratory Crusher",
+
+"Hammer Mill",
+
+"Trommel",
+
+"Crushing Roll"
+
+],
+
+answer:0,
+
+why:
+"Gyratory Crusher umum digunakan untuk primary crushing dengan kapasitas sangat besar dan operasi kontinu."
+
 },
 
 
+
 {
-  week:"Week 1",
 
-  topic:"Coarse Size Reduction",
+week:"Week 1",
 
-  q:
-  "Cone Crusher umumnya dipilih ketika …",
+topic:"Coarse Size Reduction",
 
-  options:[
-    "Produk primary crusher masih perlu diperkecil",
-    "Gas berdebu perlu dibersihkan",
-    "Produk perlu very fine grinding",
-    "Padatan perlu dipisah berdasarkan aperture"
-  ],
+q:
+"Cone Crusher umumnya dipilih ketika …",
 
-  answer:0,
+options:[
 
-  why:
-  "Cone Crusher biasanya digunakan pada secondary atau tertiary crushing setelah primary crusher."
+"Produk primary crusher masih perlu diperkecil",
+
+"Gas berdebu perlu dibersihkan",
+
+"Produk perlu very fine grinding",
+
+"Padatan perlu dipisah berdasarkan aperture"
+
+],
+
+answer:0,
+
+why:
+"Cone Crusher biasanya digunakan pada secondary atau tertiary crushing setelah primary crusher."
+
 },
 
 
+
 {
-  week:"Week 1",
 
-  topic:"Mechanism",
+week:"Week 1",
 
-  q:
-  "Mekanisme dominan pada Jaw Crusher adalah …",
+topic:"Mechanism",
 
-  options:[
-    "Compression",
-    "Attrition",
-    "Wet collection",
-    "Centrifugal separation"
-  ],
+q:
+"Mekanisme dominan pada Jaw Crusher adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Material direduksi karena gaya tekan di antara fixed jaw dan moving jaw."
+"Compression",
+
+"Attrition",
+
+"Wet collection",
+
+"Centrifugal separation"
+
+],
+
+answer:0,
+
+why:
+"Material direduksi karena gaya tekan di antara fixed jaw dan moving jaw."
+
 },
 
 
+
 {
-  week:"Week 1",
 
-  topic:"Equipment Selection",
+week:"Week 1",
 
-  q:
-  "Material sangat friable dan ingin direduksi melalui impact. Alat yang lebih sesuai adalah …",
+topic:"Equipment Selection",
 
-  options:[
-    "Rotary Crusher",
-    "Gyratory Crusher",
-    "Cone Crusher",
-    "Vibrating Screen"
-  ],
+q:
+"Material sangat friable dan ingin direduksi melalui impact. Alat yang lebih sesuai adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Rotary Crusher termasuk impact route dan cocok untuk material yang friable."
+"Rotary Crusher",
+
+"Gyratory Crusher",
+
+"Cone Crusher",
+
+"Vibrating Screen"
+
+],
+
+answer:0,
+
+why:
+"Rotary Crusher termasuk impact route dan cocok untuk material yang friable."
+
 },
 
 
+
 {
-  week:"Week 2",
 
-  topic:"Intermediate Size Reduction",
+week:"Week 2",
 
-  q:
-  "Crushing Roll paling sesuai ketika targetnya adalah …",
+topic:"Intermediate Size Reduction",
 
-  options:[
-    "Intermediate crushing dengan produk relatif seragam",
-    "Very fine grinding",
-    "Dry gas cleaning",
-    "Wet gas cleaning"
-  ],
+q:
+"Crushing Roll paling sesuai ketika targetnya adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Crushing Roll bekerja terutama dengan compression dan cocok untuk intermediate crushing."
+"Intermediate crushing dengan produk relatif seragam",
+
+"Very fine grinding",
+
+"Dry gas cleaning",
+
+"Wet gas cleaning"
+
+],
+
+answer:0,
+
+why:
+"Crushing Roll bekerja terutama dengan compression dan cocok untuk intermediate crushing."
+
 },
 
 
+
 {
-  week:"Week 2",
 
-  topic:"Impact Equipment",
+week:"Week 2",
 
-  q:
-  "Pada Impact Breaker, material terutama pecah karena …",
+topic:"Impact Equipment",
 
-  options:[
-    "Impact dengan rotor dan breaker plate",
-    "Gravitasi dalam drum berlubang",
-    "Kontak dengan liquid droplets",
-    "Gaya sentrifugal dalam cyclone"
-  ],
+q:
+"Pada Impact Breaker, material terutama pecah karena …",
 
-  answer:0,
+options:[
 
-  why:
-  "Rotor mempercepat material kemudian partikel pecah akibat impact dengan rotor dan breaker plate."
+"Impact dengan rotor dan breaker plate",
+
+"Gravitasi dalam drum berlubang",
+
+"Kontak dengan liquid droplets",
+
+"Gaya sentrifugal dalam cyclone"
+
+],
+
+answer:0,
+
+why:
+"Rotor mempercepat material kemudian partikel pecah akibat impact dengan rotor dan breaker plate."
+
 },
 
 
+
 {
-  week:"Week 2",
 
-  topic:"Impact Equipment",
+week:"Week 2",
 
-  q:
-  "Perbedaan penting Hammer Mill dibanding Impact Breaker adalah …",
+topic:"Impact Equipment",
 
-  options:[
-    "Ukuran produk Hammer Mill dapat dikontrol dengan screen",
-    "Hammer Mill tidak menggunakan impact",
-    "Hammer Mill hanya digunakan untuk gas",
-    "Impact Breaker menggunakan grinding balls"
-  ],
+q:
+"Perbedaan penting Hammer Mill dibanding Impact Breaker adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Pada Hammer Mill partikel keluar setelah ukurannya cukup kecil untuk melewati screen."
+"Ukuran produk Hammer Mill dapat dikontrol dengan screen",
+
+"Hammer Mill tidak menggunakan impact",
+
+"Hammer Mill hanya digunakan untuk gas",
+
+"Impact Breaker menggunakan grinding balls"
+
+],
+
+answer:0,
+
+why:
+"Pada Hammer Mill partikel keluar setelah ukurannya cukup kecil untuk melewati screen."
+
 },
 
 
+
 {
-  week:"Week 2",
 
-  topic:"Grinding",
+week:"Week 2",
 
-  q:
-  "Ball Mill paling tepat dipilih jika target produk adalah …",
+topic:"Grinding",
 
-  options:[
-    "Fine / very fine",
-    "Primary crushing",
-    "Dust removal",
-    "Coarse screening"
-  ],
+q:
+"Ball Mill paling tepat dipilih jika target produk adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Ball Mill digunakan untuk fine grinding dan dapat menghasilkan produk sangat halus."
+"Fine / very fine",
+
+"Primary crushing",
+
+"Dust removal",
+
+"Coarse screening"
+
+],
+
+answer:0,
+
+why:
+"Ball Mill digunakan untuk fine grinding dan dapat menghasilkan produk sangat halus."
+
 },
 
 
+
 {
-  week:"Week 2",
 
-  topic:"Grinding",
+week:"Week 2",
 
-  q:
-  "Mekanisme utama Ball Mill adalah kombinasi …",
+topic:"Grinding",
 
-  options:[
-    "Impact + attrition",
-    "Compression + filtration",
-    "Centrifugal + absorption",
-    "Screening + sedimentation"
-  ],
+q:
+"Mekanisme utama Ball Mill adalah kombinasi …",
 
-  answer:0,
+options:[
 
-  why:
-  "Grinding media memberikan impact sekaligus attrition pada material."
+"Impact + attrition",
+
+"Compression + filtration",
+
+"Centrifugal + absorption",
+
+"Screening + sedimentation"
+
+],
+
+answer:0,
+
+why:
+"Grinding media memberikan impact sekaligus attrition pada material."
+
 },
 
 
+
 {
-  week:"Week 3",
 
-  topic:"Screening",
+week:"Week 3",
 
-  q:
-  "Prinsip dasar screening membagi feed menjadi …",
+topic:"Screening",
 
-  options:[
-    "Oversize dan undersize",
-    "Vapour dan liquid",
-    "Cake dan filtrate",
-    "Adsorbate dan adsorbent"
-  ],
+q:
+"Prinsip dasar screening membagi feed menjadi …",
 
-  answer:0,
+options:[
 
-  why:
-  "Partikel lebih kecil dari aperture lolos sebagai undersize sedangkan partikel besar tertahan sebagai oversize."
+"Oversize dan undersize",
+
+"Vapour dan liquid",
+
+"Cake dan filtrate",
+
+"Adsorbate dan adsorbent"
+
+],
+
+answer:0,
+
+why:
+"Partikel lebih kecil dari aperture lolos sebagai undersize sedangkan partikel lebih besar tertahan sebagai oversize."
+
 },
 
 
+
 {
-  week:"Week 3",
 
-  topic:"Screening",
+week:"Week 3",
 
-  q:
-  "Trommel paling identik dengan …",
+topic:"Screening",
 
-  options:[
-    "Perforated cylinder yang berputar",
-    "Screen deck bergetar",
-    "Vortex gas tangensial",
-    "Kontak gas dengan liquid droplets"
-  ],
+q:
+"Trommel paling identik dengan …",
 
-  answer:0,
+options:[
 
-  why:
-  "Trommel adalah rotating perforated drum yang digunakan untuk screening."
+"Perforated cylinder yang berputar",
+
+"Screen deck bergetar",
+
+"Vortex gas tangensial",
+
+"Kontak gas dengan liquid droplets"
+
+],
+
+answer:0,
+
+why:
+"Trommel adalah rotating perforated drum yang digunakan untuk screening."
+
 },
 
 
+
 {
-  week:"Week 3",
 
-  topic:"Screening",
+week:"Week 3",
 
-  q:
-  "Jika diperlukan capacity tinggi dan klasifikasi ukuran yang lebih efektif, alat yang lebih sesuai adalah …",
+topic:"Screening",
 
-  options:[
-    "Vibrating Screen",
-    "Trommel",
-    "Cyclone",
-    "Scrubber"
-  ],
+q:
+"Jika diperlukan capacity tinggi dan klasifikasi ukuran yang lebih efektif, alat yang lebih sesuai adalah …",
 
-  answer:0,
+options:[
 
-  why:
-  "Vibrating Screen cocok untuk high-capacity classification dan dapat menggunakan multi-deck."
+"Vibrating Screen",
+
+"Trommel",
+
+"Cyclone",
+
+"Scrubber"
+
+],
+
+answer:0,
+
+why:
+"Vibrating Screen cocok untuk high-capacity classification dan dapat menggunakan multi-deck."
+
 },
 
 
+
 {
-  week:"Week 3",
 
-  topic:"Gas–Solid Separation",
+week:"Week 3",
 
-  q:
-  "Cyclone memisahkan partikel dari gas terutama berdasarkan …",
+topic:"Gas–Solid Separation",
 
-  options:[
-    "Inersia / gaya sentrifugal",
-    "Aperture size",
-    "Absorption ke cairan",
-    "Compression"
-  ],
+q:
+"Cyclone memisahkan partikel dari gas terutama berdasarkan …",
 
-  answer:0,
+options:[
 
-  why:
-  "Gas membentuk vortex sehingga partikel terdorong ke dinding akibat efek sentrifugal dan inersia."
+"Inersia / gaya sentrifugal",
+
+"Aperture size",
+
+"Absorption ke cairan",
+
+"Compression"
+
+],
+
+answer:0,
+
+why:
+"Gas membentuk vortex sehingga partikel terdorong ke dinding akibat efek sentrifugal dan inersia."
+
 },
 
 
+
 {
-  week:"Week 3",
 
-  topic:"Gas–Solid Separation",
+week:"Week 3",
 
-  q:
-  "Scrubber lebih sesuai dibanding Cyclone ketika …",
+topic:"Gas–Solid Separation",
 
-  options:[
-    "Wet capture atau cooling diperlukan",
-    "Hanya ingin dry pre-cleaning sederhana",
-    "Membutuhkan primary crushing",
-    "Membutuhkan fine grinding"
-  ],
+q:
+"Scrubber lebih sesuai dibanding Cyclone ketika …",
 
-  answer:0,
+options:[
 
-  why:
-  "Scrubber menangkap partikel melalui kontak dengan cairan dan dapat sekaligus membantu cooling atau absorption."
+"Wet capture atau cooling diperlukan",
+
+"Hanya ingin dry pre-cleaning sederhana",
+
+"Membutuhkan primary crushing",
+
+"Membutuhkan fine grinding"
+
+],
+
+answer:0,
+
+why:
+"Scrubber menangkap partikel melalui kontak dengan cairan dan dapat sekaligus membantu cooling atau absorption."
+
 }
+
 
 ];
 
 
-/* ==================================================
-   SEBAR KUNCI JAWABAN A / B / C / D
-================================================== */
+
+/* ==========================================
+   SEBAR KUNCI A / B / C / D
+========================================== */
+
 
 /*
+
 0 = A
 1 = B
 2 = C
 3 = D
 
-Urutan jawaban benar:
+Urutan kunci:
 
-1  = B
-2  = D
-3  = A
-4  = C
-5  = B
+B – D – A – C – B
+D – C – A – D – B
+C – A – B – C – D
 
-6  = D
-7  = C
-8  = A
-9  = D
-10 = B
-
-11 = C
-12 = A
-13 = B
-14 = C
-15 = D
 */
+
 
 const targetAnswerPositions = [
 
-  1, 3, 0, 2, 1,
+1,3,0,2,1,
 
-  3, 2, 0, 3, 1,
+3,2,0,3,1,
 
-  2, 0, 1, 2, 3
+2,0,1,2,3
 
 ];
 
 
-questions.forEach((q, idx) => {
 
-  /*
-  Simpan jawaban benar
-  */
+questions.forEach(
 
-  const correctOption =
-    q.options[q.answer];
+(q,idx)=>{
 
 
-  /*
-  Ambil semua pilihan salah
-  */
+const correctOption =
 
-  const distractors =
-    q.options.filter(
-      (_, i) => i !== q.answer
-    );
+q.options[
+q.answer
+];
 
 
-  /*
-  Acak distractor
-  supaya pilihan salah
-  tidak selalu berada
-  pada posisi yang sama
-  */
 
-  for(
-    let i =
-      distractors.length - 1;
+const distractors =
 
-    i > 0;
+q.options.filter(
 
-    i--
-  ){
+(_,i)=>
+i !== q.answer
 
-    const j =
-      Math.floor(
-        Math.random() *
-        (i + 1)
-      );
+);
 
 
-    [
-      distractors[i],
-      distractors[j]
-    ]
-    =
-    [
-      distractors[j],
-      distractors[i]
-    ];
 
-  }
+/* acak distractor */
 
 
-  /*
-  Posisi jawaban benar
-  untuk soal ini
-  */
+for(
 
-  const target =
-    targetAnswerPositions[
-      idx %
-      targetAnswerPositions.length
-    ];
+let i =
+distractors.length - 1;
 
+i > 0;
 
-  /*
-  Buat pilihan baru
-  */
+i--
 
-  const rebuilt =
-    [...distractors];
+){
 
 
-  /*
-  Masukkan jawaban benar
-  ke posisi A/B/C/D
-  yang sudah ditentukan
-  */
+const j =
 
-  rebuilt.splice(
-    target,
-    0,
-    correctOption
-  );
+Math.floor(
+
+Math.random() *
+(i + 1)
+
+);
 
 
-  /*
-  Update data soal
-  */
 
-  q.options =
-    rebuilt;
+[
+distractors[i],
+distractors[j]
 
-  q.answer =
-    target;
+] = [
 
-});
+distractors[j],
+distractors[i]
+
+];
 
 
-/* ==================================================
-   NAVIGASI TAB
-================================================== */
+}
+
+
+
+const target =
+
+targetAnswerPositions[
+
+idx %
+targetAnswerPositions.length
+
+];
+
+
+
+const rebuilt =
+
+[
+...distractors
+];
+
+
+
+rebuilt.splice(
+
+target,
+0,
+correctOption
+
+);
+
+
+
+q.options =
+rebuilt;
+
+
+q.answer =
+target;
+
+
+}
+
+);
+
+
+
+/* ==========================================
+   TAB NAVIGATION
+========================================== */
+
 
 const tabs =
-  document.querySelectorAll(
-    ".nav button"
-  );
+
+document.querySelectorAll(
+
+".nav button"
+
+);
+
 
 
 tabs.forEach(
 
-  button => {
-
-    button.addEventListener(
-
-      "click",
-
-      ()=>{
-
-        tabs.forEach(
-
-          b =>
-            b.classList.remove(
-              "active"
-            )
-
-        );
+button=>{
 
 
-        document
-          .querySelectorAll(
-            ".panel"
-          )
+button.addEventListener(
 
-          .forEach(
+"click",
 
-            panel =>
-              panel.classList.remove(
-                "active"
-              )
-
-          );
+()=>{
 
 
-        button
-          .classList
-          .add(
-            "active"
-          );
+tabs.forEach(
 
-
-        document
-          .getElementById(
-            button.dataset.tab
-          )
-
-          .classList
-          .add(
-            "active"
-          );
-
-      }
-
-    );
-
-  }
+b=>
+b.classList.remove(
+"active"
+)
 
 );
 
 
-/* ==================================================
-   RINGKASAN
-================================================== */
+
+document
+.querySelectorAll(
+".panel"
+)
+
+.forEach(
+
+panel=>
+panel.classList.remove(
+"active"
+)
+
+);
+
+
+
+button
+.classList
+.add(
+"active"
+);
+
+
+
+document
+.getElementById(
+button.dataset.tab
+)
+
+.classList
+.add(
+"active"
+);
+
+
+}
+
+);
+
+
+}
+
+);
+
+
+
+/* ==========================================
+   SUMMARY
+========================================== */
+
 
 const summaryGrid =
-  document.getElementById(
-    "summaryGrid"
-  );
+
+document.getElementById(
+"summaryGrid"
+);
+
 
 
 summaries.forEach(
 
-  week => {
-
-    const card =
-      document.createElement(
-        "article"
-      );
+week=>{
 
 
-    card.className =
-      "week-card";
+const card =
+
+document.createElement(
+"article"
+);
 
 
-    card.style.borderTopColor =
-      week.accent;
+
+card.className =
+"week-card";
 
 
-    card.innerHTML = `
 
-      <div class="week-label">
+card.style.borderTopColor =
 
-        ${week.week}
-
-      </div>
+week.accent;
 
 
-      <h3>
 
-        ${week.title}
-
-      </h3>
+card.innerHTML = `
 
 
-      ${
+<div class="week-label">
 
-        week.items
+${week.week}
 
-          .map(
-
-            item => `
-
-              <div class="equipment">
-
-                <b>
-                  ${item[0]}
-                </b>
-
-                <span>
-                  ${item[1]}
-                </span>
-
-              </div>
-
-            `
-
-          )
-
-          .join("")
-
-      }
-
-    `;
+</div>
 
 
-    summaryGrid
-      .appendChild(
-        card
-      );
+<h3>
 
-  }
+${week.title}
+
+</h3>
+
+
+${
+
+week.items
+
+.map(
+
+item => `
+
+
+<div class="equipment">
+
+
+<b>
+
+${item[0]}
+
+</b>
+
+
+<span>
+
+${item[1]}
+
+</span>
+
+
+</div>
+
+
+`
+
+)
+
+.join("")
+
+}
+
+
+`;
+
+
+summaryGrid
+.appendChild(
+card
+);
+
+
+}
 
 );
 
 
-/* ==================================================
+
+/* ==========================================
    FLASHCARDS
-================================================== */
+========================================== */
+
 
 const flashData =
 
-  summaries.flatMap(
+summaries.flatMap(
 
-    week =>
+week=>
 
-      week.items.map(
+week.items.map(
 
-        item => ({
+item => ({
 
-          question:
-            item[0],
+question:
+item[0],
 
-          answer:
-            item[1],
+answer:
+item[1],
 
-          week:
-            week.week
+week:
+week.week
 
-        })
+})
 
-      )
+)
 
-  );
+);
+
 
 
 const flashGrid =
-  document.getElementById(
-    "flashGrid"
-  );
+
+document.getElementById(
+"flashGrid"
+);
+
 
 
 flashData.forEach(
 
-  item => {
-
-    const card =
-      document.createElement(
-        "button"
-      );
+item=>{
 
 
-    card.type =
-      "button";
+const card =
+
+document.createElement(
+"button"
+);
 
 
-    card.className =
-      "flash";
+
+card.type =
+"button";
 
 
-    card.innerHTML = `
-
-      <div class="front">
-
-        <div class="week-label">
-
-          ${item.week}
-
-        </div>
+card.className =
+"flash";
 
 
-        <h3
-          style="
-          font-size:22px;
-          margin-top:10px;
-          ">
 
-          ${item.question}
-
-        </h3>
-
-      </div>
+card.innerHTML = `
 
 
-      <div class="back">
-
-        <b>
-
-          ${item.question}
-
-        </b>
-
-        <br><br>
-
-        ${item.answer}
-
-      </div>
+<div class="front">
 
 
-      <div class="hint">
+<div class="week-label">
 
-        klik untuk membalik
+${item.week}
 
-      </div>
-
-    `;
+</div>
 
 
-    card.addEventListener(
+<h3
+style="
+font-size:22px;
+margin-top:10px;
+">
 
-      "click",
+${item.question}
 
-      ()=>{
-
-        card
-          .classList
-          .toggle(
-            "flipped"
-          );
-
-      }
-
-    );
+</h3>
 
 
-    flashGrid
-      .appendChild(
-        card
-      );
+</div>
 
-  }
+
+
+<div class="back">
+
+
+<b>
+
+${item.question}
+
+</b>
+
+
+<br><br>
+
+
+${item.answer}
+
+
+</div>
+
+
+
+<div class="hint">
+
+klik untuk membalik
+
+</div>
+
+
+`;
+
+
+
+card.addEventListener(
+
+"click",
+
+()=>{
+
+
+card
+.classList
+.toggle(
+"flipped"
+);
+
+
+}
 
 );
 
 
-/* ==================================================
-   QUIZ
-================================================== */
+
+flashGrid
+.appendChild(
+card
+);
+
+
+}
+
+);
+
+
+
+/* ==========================================
+   QUIZ VARIABLES
+========================================== */
+
 
 let currentQuestion =
-  0;
+0;
+
 
 let score =
-  0;
+0;
+
 
 let answered =
-  false;
+false;
+
 
 
 let scoreByWeek = {
 
-  "Week 1":[0,0],
+"Week 1":[0,0],
 
-  "Week 2":[0,0],
+"Week 2":[0,0],
 
-  "Week 3":[0,0]
+"Week 3":[0,0]
 
 };
 
 
+
 const qMeta =
-  document.getElementById(
-    "qMeta"
-  );
+
+document.getElementById(
+"qMeta"
+);
+
 
 const scoreMeta =
-  document.getElementById(
-    "scoreMeta"
-  );
+
+document.getElementById(
+"scoreMeta"
+);
+
 
 const progressBar =
-  document.getElementById(
-    "progressBar"
-  );
+
+document.getElementById(
+"progressBar"
+);
+
 
 const qWeek =
-  document.getElementById(
-    "qWeek"
-  );
+
+document.getElementById(
+"qWeek"
+);
+
 
 const questionBox =
-  document.getElementById(
-    "question"
-  );
+
+document.getElementById(
+"question"
+);
+
 
 const optionsBox =
-  document.getElementById(
-    "options"
-  );
+
+document.getElementById(
+"options"
+);
+
 
 const feedbackBox =
-  document.getElementById(
-    "feedback"
-  );
+
+document.getElementById(
+"feedback"
+);
+
 
 const nextButton =
-  document.getElementById(
-    "nextBtn"
-  );
+
+document.getElementById(
+"nextBtn"
+);
+
 
 const quizBox =
-  document.getElementById(
-    "quizBox"
-  );
+
+document.getElementById(
+"quizBox"
+);
+
 
 const resultBox =
-  document.getElementById(
-    "resultBox"
-  );
+
+document.getElementById(
+"resultBox"
+);
 
 
-/* ==================================================
-   TAMPILKAN SOAL
-================================================== */
+
+/* ==========================================
+   RENDER QUESTION
+========================================== */
+
 
 function renderQuestion(){
 
-  answered =
-    false;
 
+answered =
+false;
 
-  const q =
-    questions[
-      currentQuestion
-    ];
 
 
-  qMeta.textContent =
+const q =
 
-    `Soal ${currentQuestion + 1} dari ${questions.length}`;
+questions[
+currentQuestion
+];
 
 
-  scoreMeta.textContent =
 
-    `Skor: ${score}`;
+qMeta.textContent =
 
+`Soal ${currentQuestion + 1} dari ${questions.length}`;
 
-  progressBar.style.width =
 
-    `${
-      (
-        currentQuestion /
-        questions.length
-      ) * 100
-    }%`;
 
+scoreMeta.textContent =
 
-  qWeek.textContent =
+`Skor: ${score}`;
 
-    `${q.week} • ${q.topic}`;
 
 
-  questionBox.textContent =
-    q.q;
+progressBar.style.width =
 
+`${
 
-  optionsBox.innerHTML =
-    "";
+(
+currentQuestion /
+questions.length
+)
 
+* 100
 
-  feedbackBox.className =
-    "feedback";
+}%`;
 
 
-  feedbackBox.textContent =
-    "";
 
+qWeek.textContent =
 
-  nextButton.style.display =
-    "none";
+`${q.week} • ${q.topic}`;
 
 
-  q.options.forEach(
 
-    (option,index)=>{
+questionBox.textContent =
 
-      const button =
-        document.createElement(
-          "button"
-        );
+q.q;
 
 
-      button.type =
-        "button";
 
+optionsBox.innerHTML =
+"";
 
-      button.className =
-        "option";
 
 
-      button.textContent =
+feedbackBox.className =
 
-        `${String.fromCharCode(
-          65 + index
-        )}. ${option}`;
+"feedback";
 
 
-      button.addEventListener(
 
-        "click",
+feedbackBox.textContent =
+"";
 
-        ()=>{
 
-          checkAnswer(
-            index,
-            button
-          );
 
-        }
+nextButton.style.display =
 
-      );
+"none";
 
 
-      optionsBox
-        .appendChild(
-          button
-        );
 
-    }
+q.options.forEach(
 
-  );
+(option,index)=>{
 
-}
 
+const button =
 
-/* ==================================================
-   CEK JAWABAN
-================================================== */
+document.createElement(
+"button"
+);
 
-function checkAnswer(
-  choice,
-  clickedButton
-){
 
-  if(answered){
-    return;
-  }
 
+button.type =
+"button";
 
-  answered =
-    true;
 
+button.className =
+"option";
 
-  const q =
-    questions[
-      currentQuestion
-    ];
 
 
-  scoreByWeek[
-    q.week
-  ][1]++;
+button.textContent =
 
+`${
 
-  const optionButtons =
-    [
-      ...optionsBox.children
-    ];
+String.fromCharCode(
+65 + index
+)
 
+}. ${option}`;
 
-  optionButtons.forEach(
 
-    (button,index)=>{
 
-      button.disabled =
-        true;
+button.addEventListener(
 
+"click",
 
-      if(
-        index ===
-        q.answer
-      ){
+()=>{
 
-        button
-          .classList
-          .add(
-            "correct"
-          );
 
-      }
+checkAnswer(
 
-    }
-
-  );
-
-
-  if(
-    choice ===
-    q.answer
-  ){
-
-    score++;
-
-
-    scoreByWeek[
-      q.week
-    ][0]++;
-
-
-    clickedButton
-      .classList
-      .add(
-        "correct"
-      );
-
-
-    feedbackBox.textContent =
-
-      "✓ Benar. " +
-      q.why;
-
-
-    feedbackBox.className =
-
-      "feedback show good";
-
-  }
-
-  else{
-
-    clickedButton
-      .classList
-      .add(
-        "wrong"
-      );
-
-
-    feedbackBox.textContent =
-
-      "✕ Belum tepat. " +
-      q.why;
-
-
-    feedbackBox.className =
-
-      "feedback show bad";
-
-  }
-
-
-  scoreMeta.textContent =
-
-    `Skor: ${score}`;
-
-
-  if(
-    currentQuestion ===
-    questions.length - 1
-  ){
-
-    nextButton.textContent =
-
-      "Lihat hasil →";
-
-  }
-
-  else{
-
-    nextButton.textContent =
-
-      "Soal berikutnya →";
-
-  }
-
-
-  nextButton.style.display =
-    "inline-block";
-
-}
-
-
-/* ==================================================
-   HASIL QUIZ
-================================================== */
-
-function showResult(){
-
-  quizBox.style.display =
-    "none";
-
-
-  resultBox.style.display =
-    "block";
-
-
-  const percent =
-
-    Math.round(
-
-      score /
-      questions.length *
-      100
-
-    );
-
-
-  document
-    .getElementById(
-      "finalScore"
-    )
-
-    .textContent =
-
-      `${score} / ${questions.length} • ${percent}%`;
-
-
-  let message;
-
-
-  if(
-    percent >= 85
-  ){
-
-    message =
-
-      "Sangat baik. Konsep selektivitas alat Week 1–3 sudah kuat.";
-
-  }
-
-  else if(
-    percent >= 65
-  ){
-
-    message =
-
-      "Sudah cukup baik. Review kembali alat yang mekanismenya mirip.";
-
-  }
-
-  else{
-
-    message =
-
-      "Perlu review lagi. Fokus pada hubungan feed → mekanisme → fungsi alat.";
-
-  }
-
-
-  document
-    .getElementById(
-      "finalMessage"
-    )
-
-    .textContent =
-      message;
-
-
-  const breakdown =
-
-    document.getElementById(
-      "breakdown"
-    );
-
-
-  breakdown.innerHTML =
-    "";
-
-
-  Object.entries(
-    scoreByWeek
-  )
-
-  .forEach(
-
-    ([week,value])=>{
-
-      const box =
-        document.createElement(
-          "div"
-        );
-
-
-      box.innerHTML = `
-
-        <b>
-
-          ${week}
-
-        </b>
-
-        <br>
-
-        <span
-          style="
-          font-size:24px;
-          color:#153452;
-          ">
-
-          ${value[0]} / ${value[1]}
-
-        </span>
-
-      `;
-
-
-      breakdown
-        .appendChild(
-          box
-        );
-
-    }
-
-  );
-
-}
-
-
-/* ==================================================
-   RESET QUIZ
-================================================== */
-
-function resetQuiz(){
-
-  currentQuestion =
-    0;
-
-
-  score =
-    0;
-
-
-  answered =
-    false;
-
-
-  scoreByWeek = {
-
-    "Week 1":[0,0],
-
-    "Week 2":[0,0],
-
-    "Week 3":[0,0]
-
-  };
-
-
-  quizBox.style.display =
-    "block";
-
-
-  resultBox.style.display =
-    "none";
-
-
-  renderQuestion();
-
-}
-
-
-/* ==================================================
-   NEXT BUTTON
-================================================== */
-
-nextButton.addEventListener(
-
-  "click",
-
-  ()=>{
-
-    if(
-      !answered
-    ){
-      return;
-    }
-
-
-    if(
-      currentQuestion <
-      questions.length - 1
-    ){
-
-      currentQuestion++;
-
-      renderQuestion();
-
-    }
-
-    else{
-
-      showResult();
-
-    }
-
-  }
+index,
+button
 
 );
 
 
-/* ==================================================
-   RESET BUTTON
-================================================== */
+}
 
-document
-  .getElementById(
-    "resetQuiz"
-  )
-
-  .addEventListener(
-
-    "click",
-
-    resetQuiz
-
-  );
+);
 
 
-/* ==================================================
-   RESTART BUTTON
-================================================== */
 
-document
-  .getElementById(
-    "restartQuiz"
-  )
-
-  .addEventListener(
-
-    "click",
-
-    resetQuiz
-
-  );
+optionsBox
+.appendChild(
+button
+);
 
 
-/* ==================================================
-   START
-================================================== */
+}
+
+);
+
+
+}
+
+
+
+/* ==========================================
+   CHECK ANSWER
+========================================== */
+
+
+function checkAnswer(
+
+choice,
+clickedButton
+
+){
+
+
+if(answered){
+
+return;
+
+}
+
+
+
+answered =
+true;
+
+
+
+const q =
+
+questions[
+currentQuestion
+];
+
+
+
+scoreByWeek[
+q.week
+][1]++;
+
+
+
+const optionButtons =
+
+[
+...optionsBox.children
+];
+
+
+
+optionButtons.forEach(
+
+(button,index)=>{
+
+
+button.disabled =
+true;
+
+
+
+if(
+
+index ===
+q.answer
+
+){
+
+
+button
+.classList
+.add(
+"correct"
+);
+
+
+}
+
+
+}
+
+);
+
+
+
+if(
+
+choice ===
+q.answer
+
+){
+
+
+score++;
+
+
+
+scoreByWeek[
+q.week
+][0]++;
+
+
+
+clickedButton
+.classList
+.add(
+"correct"
+);
+
+
+
+feedbackBox.textContent =
+
+"✓ Benar. " +
+q.why;
+
+
+
+feedbackBox.className =
+
+"feedback show good";
+
+
+}
+
+
+else{
+
+
+clickedButton
+.classList
+.add(
+"wrong"
+);
+
+
+
+feedbackBox.textContent =
+
+"✕ Belum tepat. " +
+q.why;
+
+
+
+feedbackBox.className =
+
+"feedback show bad";
+
+
+}
+
+
+
+scoreMeta.textContent =
+
+`Skor: ${score}`;
+
+
+
+if(
+
+currentQuestion ===
+questions.length - 1
+
+){
+
+
+nextButton.textContent =
+
+"Lihat hasil →";
+
+
+}
+
+
+else{
+
+
+nextButton.textContent =
+
+"Soal berikutnya →";
+
+
+}
+
+
+
+nextButton.style.display =
+
+"inline-block";
+
+
+}
+
+
+
+/* ==========================================
+   NEXT
+========================================== */
+
+
+nextButton.addEventListener(
+
+"click",
+
+()=>{
+
+
+if(
+
+!answered
+
+){
+
+return;
+
+}
+
+
+
+if(
+
+currentQuestion <
+questions.length - 1
+
+){
+
+
+currentQuestion++;
+
 
 renderQuestion();
 
+
+}
+
+
+else{
+
+
+showResult();
+
+
+}
+
+
+}
+
+);
+
+
+
+/* ==========================================
+   RESULT
+========================================== */
+
+
+function showResult(){
+
+
+quizBox.style.display =
+
+"none";
+
+
+
+resultBox.style.display =
+
+"block";
+
+
+
+const percent =
+
+Math.round(
+
+score /
+questions.length *
+100
+
+);
+
+
+
+document
+.getElementById(
+"finalScore"
+)
+
+.textContent =
+
+`${score} / ${questions.length} • ${percent}%`;
+
+
+
+let message;
+
+
+
+if(
+
+percent >= 85
+
+){
+
+
+message =
+
+"Sangat baik. Konsep Size Reduction dan Solid Separation sudah kuat.";
+
+
+}
+
+
+else if(
+
+percent >= 65
+
+){
+
+
+message =
+
+"Sudah cukup baik. Review kembali alat yang mekanismenya mirip.";
+
+
+}
+
+
+else{
+
+
+message =
+
+"Perlu review lagi. Fokus pada hubungan feed → mekanisme → fungsi alat.";
+
+
+}
+
+
+
+document
+.getElementById(
+"finalMessage"
+)
+
+.textContent =
+
+message;
+
+
+
+const breakdown =
+
+document.getElementById(
+"breakdown"
+);
+
+
+
+breakdown.innerHTML =
+"";
+
+
+
+Object.entries(
+
+scoreByWeek
+
+)
+
+.forEach(
+
+([week,value])=>{
+
+
+const box =
+
+document.createElement(
+"div"
+);
+
+
+
+box.innerHTML = `
+
+
+<b>
+
+${week}
+
+</b>
+
+
+<br>
+
+
+<span
+style="
+font-size:24px;
+color:#153452;
+">
+
+${value[0]} / ${value[1]}
+
+</span>
+
+
+`;
+
+
+breakdown
+.appendChild(
+box
+);
+
+
+}
+
+);
+
+
+}
+
+
+
+/* ==========================================
+   RESET QUIZ
+========================================== */
+
+
+function resetQuiz(){
+
+
+currentQuestion =
+0;
+
+
+score =
+0;
+
+
+answered =
+false;
+
+
+
+scoreByWeek = {
+
+"Week 1":[0,0],
+
+"Week 2":[0,0],
+
+"Week 3":[0,0]
+
+};
+
+
+
+quizBox.style.display =
+
+"block";
+
+
+
+resultBox.style.display =
+
+"none";
+
+
+
+renderQuestion();
+
+
+}
+
+
+
+document
+.getElementById(
+"resetQuiz"
+)
+
+.addEventListener(
+
+"click",
+
+resetQuiz
+
+);
+
+
+
+document
+.getElementById(
+"restartQuiz"
+)
+
+.addEventListener(
+
+"click",
+
+resetQuiz
+
+);
+
+
+
+/* ==========================================
+   START
+========================================== */
+
+
+renderQuestion();
+
+
 </script>
 
+
 </body>
+
 </html>
